@@ -1,2 +1,2 @@
 # Anubis
-Class_project
+ACA-DevOps-Bootcamp-Anubis
