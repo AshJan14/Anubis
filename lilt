@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#Display CPU, Memory and disk usage
+##CPU %
+
+Var1=$(top -bn1 | grep "Cpu" | \
+           sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | \
+ awk '{print 100 - $1"%"}')
+##Memory %
+Var2=$(free -m | grep -i mem | tr -s " " | cut -d " " -f 3)
+##Disk usage %
+Var3=$(df -h | tr -s " " | cut -d " " -f 5 | head -4 | tail -1)
+echo "$Var1 $Var2 $Var3" > /var/www/index.html
